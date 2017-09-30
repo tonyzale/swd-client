@@ -1,0 +1,23 @@
+<div class = "card_wrap"
+     (click)="(card.moves.length > 0) && clickCard()"
+     [ngClass]="{exhausted: (state==1)}"
+     [ngStyle]="{
+          'left': left,
+          'top': top,
+          'border': borderCss(),
+          'margin': '2px',
+          'width': wrapWidth()
+     }">
+     <div style="position:relative">
+          <img class="card"
+               [src]="imgPath()"
+               [ngStyle]="{
+                    'width': width + 'px',
+                    'height': height + 'px'
+               }" />
+          <div class="card_overlay"
+               [ngStyle]="{
+                    'top': (height * 0.857) + 'px'
+               }">{{overlay}}</div>
+     </div>
+</div>

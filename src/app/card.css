@@ -1,0 +1,36 @@
+.card_wrap {
+    position: relative;
+    display: inline-block;
+    transition: width 0.25s, transform 0.25s;
+    z-index: 1;
+}
+
+.card {
+    position: relative;
+    display: block;
+    margin: auto;
+}
+
+.card_wrap:hover {
+    transform: scale(1.5);
+    z-index: 2;
+}
+
+.card_wrap.exhausted {
+    transform: rotate(90deg) scale(1);
+}
+
+.card_wrap.exhausted:hover {
+    transform: rotate(90deg) scale(1.5);
+}
+
+.card_overlay {
+    position: absolute;
+    left: 5px;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
