@@ -1,7 +1,7 @@
 import { Component, Injectable, Input, Output, EventEmitter } from '@angular/core';
 import { Character, Upgrade, Support } from '../../../swd/game/game';
 import { Card } from '../../../swd/game/cards';
-import { Chat, ClientGameState, Modal, SerializedTurnAction } from './json_payload';
+import { Chat, ClientGameState, Modal, ModalSelection, SerializedTurnAction } from '../../../swd/game/json_payload';
 import * as io from 'socket.io-client';
 
 @Injectable()
