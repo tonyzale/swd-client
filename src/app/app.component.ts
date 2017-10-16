@@ -1,13 +1,14 @@
 import { Component, Injectable, Input, Output, EventEmitter } from '@angular/core';
 import { Character, Upgrade, Support } from '../../../swd/game/game';
 import { Card } from '../../../swd/game/cards';
-import { Chat, ClientGameState, Modal, ModalSelection, SerializedTurnAction } from '../../../swd/game/json_payload';
+import { Chat, ClientGameState, Modal, ModalOption, ModalSelection, SerializedTurnAction } from '../../../swd/game/json_payload';
+import { Serialize } from 'cerialize';
 import * as io from 'socket.io-client';
 
 @Injectable()
 export class SocketService {
     socket = io('http://100.115.92.2:3000');
-    // socket = io('http://0.0.0.0:3000');
+    //socket = io('http://0.0.0.0:3000');
 }
 
 interface ModalContent {
@@ -39,9 +40,9 @@ export class ModalComponent {
     clickedOption(option: number) {
         let selection: ModalSelection = {
             content_id: this.content.id,
-            choice: this.content.options[option].text
+            choice: this.content.options[option].sta
         };
-        this.socketService.socket.emit('choice', JSON.stringify(selection));
+        this.socketService.socket.emit('choice', JSON.stringify(Serialize(selection)));;
         this.closeModal.emit(true);
     }
 };
@@ -201,6 +202,7 @@ export class CardComponent {
             modal_data.options.push({
                 card_id: this.card.id,
                 option_idx: i,
+                sta: m,
                 text: JSON.stringify(m)
             })
         });
